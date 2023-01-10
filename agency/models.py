@@ -15,6 +15,7 @@ class Topic(models.Model):
 
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField()
+    REQUIRED_FIELDS = ['years_of_experience', ]
 
     class Meta:
         ordering = ["username"]
@@ -38,4 +39,3 @@ class Newspaper(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.context} ({self.published_date})"
-
