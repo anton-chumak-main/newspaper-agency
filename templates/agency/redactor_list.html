@@ -6,7 +6,7 @@
   {% if redactor_list %}
     <ul>
       {% for redactor in redactor_list %}
-        <li><a href="#">{{ redactor.username }}</a>{% if user == redactor %} (Me){% endif %}</li>
+        <li><a href="{% url 'agency:redactor-detail' pk=redactor.id %}">{{ redactor.username }}</a>{% if user == redactor %} (Me){% endif %}</li>
         <li>({{ redactor.first_name }} {{ redactor.last_name }})</li>
       {% endfor %}
     </ul>

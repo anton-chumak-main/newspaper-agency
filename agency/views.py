@@ -43,3 +43,5 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
     template_name = "agency/redactor_list.html"
 
 
+class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Redactor
