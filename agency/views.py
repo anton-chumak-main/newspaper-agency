@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.views import generic
 
 from agency.models import Redactor, Newspaper, Topic
 
@@ -19,3 +21,18 @@ def index(request):
         }
 
     return render(request, "agency/index.html", context=context)
+
+
+class TopicListView(LoginRequiredMixin, generic.ListView):
+    model = Topic
+    template_name = "agency/topic_list.html"
+
+
+class NewspaperListView(LoginRequiredMixin, generic.ListView):
+    model = Newspaper
+    template_name = "agency/newspaper_list.html"
+
+
+class RedactorListView(LoginRequiredMixin, generic.ListView):
+    model = Redactor
+    template_name = "agency/redactor_list.html"
