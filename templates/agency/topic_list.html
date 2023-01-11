@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Topics list</h1>
+  <h1>Topic list</h1>
   {% if topic_list %}
     <ul>
       {% for topic in topic_list %}
-        <li>{{ topic.id }}</li>
-        <li><a href="#">{{ topic.name }}</a></li>
+        <li><a href="#">{{ topic.name }}</a> </li>
       {% endfor %}
     </ul>
   {% else %}

@@ -19,6 +19,11 @@ class Redactor(AbstractUser):
 
     class Meta:
         ordering = ["username"]
+        verbose_name = "redactor"
+        verbose_name_plural = "redactors"
+
+    def __str__(self):
+        return f"{self.username} ({self.first_name} {self.last_name})"
 
 
 class Newspaper(models.Model):
@@ -28,7 +33,6 @@ class Newspaper(models.Model):
     topic = models.ForeignKey(
         Topic,
         on_delete=models.CASCADE,
-        related_name="newspapers"
     )
     publishers = models.ManyToManyField(
         settings.AUTH_USER_MODEL,

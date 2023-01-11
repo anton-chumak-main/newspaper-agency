@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>New papers list</h1>
+  <h1>Newspaper list</h1>
 
   {% if newspaper_list  %}
   <ul>
       {% for newspaper in newspaper_list %}
-        <li><a href="#">{{ newspaper.title }}</a>({{ newspaper.published_date }})</li>
+        <li><a href="{% url 'agency:newspaper-detail' pk=newspaper.id %}">{{ newspaper.title }}</a> (
+          {{ newspaper.topic.name }} - {{ newspaper.published_date }}) </li>
       {% endfor %}
     </ul>
   {% else %}

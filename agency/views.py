@@ -31,8 +31,15 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     template_name = "agency/newspaper_list.html"
+    queryset = Newspaper.objects.all().select_related("topic")
+
+
+class NewspapersDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Newspaper
 
 
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
     template_name = "agency/redactor_list.html"
+
+
