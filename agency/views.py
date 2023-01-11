@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from agency.models import Redactor, Newspaper, Topic
@@ -26,6 +27,12 @@ def index(request):
 class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     template_name = "agency/topic_list.html"
+
+
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("agency/topic-list")
 
 
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
