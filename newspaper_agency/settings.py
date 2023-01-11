@@ -109,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "agency.Redactor"
 
+LOGIN_REDIRECT_URL = "/agency/"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

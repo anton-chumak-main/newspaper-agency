@@ -32,7 +32,7 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
 class TopicCreateView(LoginRequiredMixin, generic.CreateView):
     model = Topic
     fields = "__all__"
-    success_url = reverse_lazy("agency/topic-list")
+    success_url = reverse_lazy("agency:topic-list")
 
 
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
