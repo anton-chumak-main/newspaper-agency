@@ -3,6 +3,7 @@
   {% block content %}
     <h1>{{ newspaper.title }}
       <a href="{% url 'agency:newspaper-delete' pk=newspaper.id%}">Delete</a>
+      <a href="{% url 'agency:newspaper-update' pk=newspaper.id%}">Update</a>
     </h1>
     <h3>{{ newspaper.topic.name }}, {{ newspaper.published_date }}</h3>
     <p>{{ newspaper.context }}</p>

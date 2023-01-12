@@ -3,6 +3,8 @@
 {% block content %}
   <h1>
     Username: {{ redactor.username }}
+  <a href="{% url 'agency:redactor-update' pk=redactor.id%}">Edit</a>
+  <a href="{% url 'agency:redactor-delete' pk=redactor.id%}">Delete</a>
   </h1>
 
   <p><strong>First name:</strong> {{ redactor.first_name }}</p>
@@ -17,7 +19,7 @@
         <p class="text-muted"><strong>Id:</strong> {{newspaper.id}}</p>
 
     {% empty %}
-      <p>No Newspapers</p>
+      <p>No Redactors</p>
     {% endfor %}
 
 {% endblock %}
