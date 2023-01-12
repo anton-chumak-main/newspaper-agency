@@ -56,6 +56,23 @@ class NewspapersDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
 
 
+class NewspapersCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("agency:newspaper-list")
+
+
+class NewspapersUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("agency:newspaper-list")
+
+
+class NewspapersDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("agency:newspaper-list")
+
+
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
     template_name = "agency/redactor_list.html"
