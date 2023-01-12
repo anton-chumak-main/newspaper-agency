@@ -87,4 +87,3 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     fields = ["username", "first_name", "last_name", "years_of_experience"]
     success_url = reverse_lazy("agency:redactor-list")
     template_name = "agency/redactor_form.html"
-
