@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from agency.forms import RedactorCreationForm
 from agency.models import Redactor, Newspaper, Topic
 
 
@@ -43,6 +44,7 @@ class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Topic
+    template_name = "agency/topic_confirm_delete.html"
     success_url = reverse_lazy("agency:topic-list")
 
 
@@ -70,6 +72,7 @@ class NewspapersUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class NewspapersDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Newspaper
+    template_name = "agency/newspaper_confirm_delete.html"
     success_url = reverse_lazy("agency:newspaper-list")
 
 
@@ -84,6 +87,13 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
 
 class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     model = Redactor
-    fields = ["username", "first_name", "last_name", "years_of_experience"]
-    success_url = reverse_lazy("agency:redactor-list")
+    form_class = RedactorCreationForm
     template_name = "agency/redactor_form.html"
+
+
+class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Redactor
+
+
+class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Redactor

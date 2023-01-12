@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
   {% block content %}
-    <h1>{{ newspaper.title }}</h1>
+    <h1>{{ newspaper.title }}
+      <a href="{% url 'agency:newspaper-delete' pk=newspaper.id%}">Delete</a>
+    </h1>
     <h3>{{ newspaper.topic.name }}, {{ newspaper.published_date }}</h3>
     <p>{{ newspaper.context }}</p>
     {% for publiser in newspaper.publishers.all %}
