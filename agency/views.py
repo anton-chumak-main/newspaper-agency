@@ -28,6 +28,7 @@ def index(request):
 class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     template_name = "agency/topic_list.html"
+    paginate_by = 3
 
 
 class TopicCreateView(LoginRequiredMixin, generic.CreateView):
