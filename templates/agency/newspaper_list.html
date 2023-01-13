@@ -4,6 +4,9 @@
   <h1>Newspaper list
     <a href="{% url 'agency:newspaper-create' %}">Create</a>
   </h1>
+  {% block search %}
+    {% include "includes/search.html" %}
+  {% endblock %}
 
   {% if newspaper_list  %}
   <ul>
@@ -13,7 +16,7 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p>There are no topics</p>
+    <p>There are no newspapers</p>
 
   {% endif %}
 {% endblock %}
