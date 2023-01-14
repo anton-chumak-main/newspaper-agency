@@ -26,8 +26,8 @@ class Redactor(AbstractUser):
     def __str__(self):
         return f"{self.username} ({self.first_name} {self.last_name})"
 
-    # def get_absolute_url(self):
-    #     return reverse("agency:redactor-list", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("agency:redactor-detail", kwargs={"pk": self.pk})
 
 
 class Newspaper(models.Model):
@@ -46,8 +46,8 @@ class Newspaper(models.Model):
     class Meta:
         ordering = ["title"]
 
-    def get_absolute_url(self):
-        return reverse("agency:newspaper-detail", args=[str(self.id)])
-
     def __str__(self):
         return f"{self.title} {self.context} ({self.published_date})"
+
+    def get_absolute_url(self):
+        return reverse("agency:newspaper-detail", kwargs={"pk": self.pk})
