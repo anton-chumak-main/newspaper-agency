@@ -43,8 +43,9 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        form = TopicSearchForm(self.request.GET)
         queryset = Topic.objects.all()
+
+        form = TopicSearchForm(self.request.GET)
 
         if form.is_valid():
             return queryset.filter(
@@ -75,7 +76,6 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     template_name = "agency/newspaper_list.html"
-    queryset = Newspaper.objects.all().select_related("topic")
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NewspaperListView, self).get_context_data(**kwargs)
@@ -89,14 +89,16 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
+        queryset = Newspaper.objects.select_related("topic")
+
         form = NewspaperSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
+            return queryset.filter(
                 title__icontains=form.cleaned_data["title"]
             )
 
-        return self.queryset
+        return queryset
 
 
 class NewspapersDetailView(LoginRequiredMixin, generic.DetailView):
@@ -136,8 +138,9 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        form = RedactorSearchForm(self.request.GET)
         queryset = Redactor.objects.all()
+
+        form = RedactorSearchForm(self.request.GET)
 
         if form.is_valid():
             return queryset.filter(
