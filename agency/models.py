@@ -15,7 +15,7 @@ class Topic(models.Model):
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField(blank=False)
+    years_of_experience = models.IntegerField(null=True, blank=False)
     REQUIRED_FIELDS = ["years_of_experience", ]
 
     class Meta:

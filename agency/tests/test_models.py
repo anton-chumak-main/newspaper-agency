@@ -29,9 +29,7 @@ class ModelTests(TestCase):
     def test_topic_str(self):
         topic = Topic.objects.get(id=1)
 
-        self.assertEqual(
-            str(topic), topic.name
-        )
+        self.assertEqual(str(topic), topic.name)
 
     def test_redactor_str_and_password(self):
         redactor = get_user_model().objects.get(id=1)
@@ -40,6 +38,7 @@ class ModelTests(TestCase):
             str(redactor),
             f"{redactor.username} ({redactor.first_name} {redactor.last_name})"
         )
+
         self.assertTrue(redactor.check_password("test1234"))
 
     def test_get_absolute_url(self):
