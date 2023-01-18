@@ -1,13 +1,51 @@
-<ul>
-{% if user.is_authenticated %}
-    <li>User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
-    <li ><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-  {% else %}
-    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-{% endif %}
 
-<a href="{% url 'agency:index' %}">Home</a>
-<a href="{% url 'agency:topic-list' %}">All topics</a>
-<a href="{% url 'agency:newspaper-list' %}">All newspapers</a>
-<a href="{% url 'agency:redactor-list' %}">All redactors</a>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'agency:index' %}">NewspaperAgency</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agency:newspaper-list' %}">All articles</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agency:topic-list' %}">All topics</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agency:redactor-list' %}">All publishers</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          {% if user.is_authenticated %}
+            <a class="nav-link dropdown-toggle justify-content-center" href="{{ user.get_absolute_url }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Username: {{ user.get_username }}
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+          </ul>
+          {% else %}
+           <li class="nav-item">
+             <a class="nav-link align-content-end" href="{% url 'login'%}?next={{request.path}}">Login</a>
+           </li>
+          {% endif %}
+        </ul>
+
+        {% if search_form %}
+          <form class="d-flex" role="search" action="" method="get">
+            <input class="form-control" type="{{ search_form }}">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        {% endif %}
+    </div>
+  </div>
+</nav>

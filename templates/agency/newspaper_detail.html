@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 
+{% block title %}<title>Articles | NewspaperAgency</title>{% endblock %}
+
   {% block content %}
-    <h1>{{ newspaper.title }}
-      <a href="{% url 'agency:newspaper-delete' pk=newspaper.id%}">Delete</a>
-      <a href="{% url 'agency:newspaper-update' pk=newspaper.id%}">Update</a>
+    <h1 class=" text-xl-center">{{ newspaper.title }}
+
     </h1>
     <h3>{{ newspaper.topic.name }}, {{ newspaper.published_date }}</h3>
     <p>{{ newspaper.context }}</p>
-    {% for publiser in newspaper.publishers.all %}
+
+    <br>
+      {% for publiser in newspaper.publishers.all %}
       <li>{{ publiser.username }} ({{ publiser.first_name }} {{ publiser.last_name }})</li>
     {% endfor %}
+      <br>
+      <a class="btn btn-outline-danger" href="{% url 'agency:newspaper-delete' pk=newspaper.id%}"> Delete </a>
+      <a class="btn btn-outline-primary" href="{% url 'agency:newspaper-update' pk=newspaper.id%}"> Update </a>
+      <a class="btn btn-outline-secondary" href="{% url 'agency:newspaper-list' %}"> Back </a>
 
   {% endblock %}

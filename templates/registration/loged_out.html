@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-  <form method="post" action="{% url 'logout' %}">
+  <form method="post" action="{% url 'logout' %}" >
   {% csrf_token %}
   {{ form.as_p }}
 </form>
 {% endblock %}
-

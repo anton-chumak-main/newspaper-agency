@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Username: {{ redactor.username }}
-  <a href="{% url 'agency:redactor-update' pk=redactor.id%}">Edit</a>
-  <a href="{% url 'agency:redactor-delete' pk=redactor.id%}">Delete</a>
-  </h1>
+  <h1>Username: {{ redactor.username }}</h1>
 
   <p><strong>First name:</strong> {{ redactor.first_name }}</p>
   <p><strong>Last name:</strong> {{ redactor.last_name }}</p>
@@ -19,7 +15,11 @@
         <p class="text-muted"><strong>Id:</strong> {{newspaper.id}}</p>
 
     {% empty %}
-      <p>No Redactors</p>
+      <p>No Publishers</p>
     {% endfor %}
-
+  <div>
+    <a class="btn btn-outline-primary" href="{% url 'agency:redactor-update' pk=redactor.id%}"> Edit </a>
+    <a class="btn btn-outline-danger" href="{% url 'agency:redactor-delete' pk=redactor.id%}"> Delete </a>
+    <a class="btn btn-outline-secondary" href="{% url 'agency:redactor-list' %}"> Back </a>
+  </div>
 {% endblock %}

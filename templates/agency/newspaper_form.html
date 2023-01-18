@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
+{% block title %}<title>Edit | NewspaperAgency</title>{% endblock %}
+
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} newspaper</h1>
+  <h1>{{ object|yesno:"Update,Create" }} article {{ newspaper.title }}</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
 
+  <div>
     <input type="submit" value="Submit" class="btn btn-primary">
+    <a class="btn btn-outline-secondary" href="{% url 'agency:newspaper-list' %}"> Back </a>
+  </div>
   </form>
 {% endblock %}

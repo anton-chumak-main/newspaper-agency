@@ -1,22 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}<title>Newspaper | NewspaperAgency</title>{% endblock %}
 
 {% block content %}
-  <h1>Newspaper list
-    <a href="{% url 'agency:newspaper-create' %}">Create</a>
+
+  <h1 class="text-xxl-center">
+    <div class="p-3 mb-2 border border-dark ">Topical articles</div>
   </h1>
-  {% block search %}
-    {% include "includes/search.html" %}
-  {% endblock %}
-
+  <br>
   {% if newspaper_list  %}
-  <ul>
-      {% for newspaper in newspaper_list %}
-        <li><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a> (
-          {{ newspaper.topic.name }} - {{ newspaper.published_date }}) </li>
-      {% endfor %}
-    </ul>
+    {% for newspaper in newspaper_list %}
+      <div class="card bg-dark text-dark">
+        <img src="{% static 'img/gray_fon.jpeg' %}" class="card-img p-7 bg-gradient" style="max-height: 150px" alt="Art">
+        <div class="card-img-overlay">
+          <h5 class="card-title ">{{ newspaper.title }}</h5>
+          <p class="card-text"><small class="text-dark ">({{ newspaper.topic.name }} - {{ newspaper.published_date }})</small></p>
+          <p class="card-text"><a type="button" class="btn btn-primary btn-sm" href="{{ newspaper.get_absolute_url }}"> Read more >>> </a></p>
+        </div>
+      </div>
+      <br>
+    {% endfor %}
   {% else %}
-    <p>There are no newspapers</p>
-
+    <p>There are no articles</p>
   {% endif %}
+
+    <div>
+      <a class="btn btn-outline-primary" href="{% url 'agency:newspaper-create' %}"> Create </a>
+      <a class="btn btn-outline-secondary" href="{% url 'agency:index' %}"> Back </a>
+    </div>
+
 {% endblock %}

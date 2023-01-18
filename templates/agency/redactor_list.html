@@ -1,23 +1,31 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block title %}<title>Publishers | NewspaperAgency</title>{% endblock %}
 
 {% block content %}
-  <h1>Redactor list
-    <a href="{% url 'agency:redactor-create' %}">Create</a>
+  <h1 class="text-xxl-center" >
+    <div class="p-3 mb-2 border border-dark ">Publishers</div>
   </h1>
-  {% block search %}
-    {% include "includes/search.html" %}
-  {% endblock %}
+  <br>
   {% if redactor_list %}
-    <ul>
+
       {% for redactor in redactor_list %}
-        <li><a href="{% url 'agency:redactor-detail' pk=redactor.id %}">{{ redactor.username }}</a>{% if user == redactor %} (Me){% endif %}</li>
-        <li>({{ redactor.first_name }} {{ redactor.last_name }})</li>
+        <div class="card bg-dark text-dark">
+          <img src="{% static 'img/gray_fon.jpeg' %}" class="card-img p-7 bg-gradient" style="max-height: 150px" alt="Art">
+            <div class="card-img-overlay">
+              <h5 class="card-title ">{{ redactor.username }} {% if user == redactor %} (Me){% endif %}</h5>
+            <p class="card-text"><small class="text-dark ">({{ redactor.first_name }} {{ redactor.last_name }})</small></p>
+              <p class="card-text "><a type="button" class="btn btn-primary btn-sm" href="{% url 'agency:redactor-detail' pk=redactor.id %}">About >>></a></p>
+          </div>
+        </div>
+        <br>
       {% endfor %}
-    </ul>
   {% else %}
     <p>There are no publishers</p>
-
   {% endif %}
-
+<div>
+  <a class="btn btn-outline-primary" href="{% url 'agency:redactor-create' %}">Create</a>
+  <a class="btn btn-outline-secondary" href="{% url 'agency:index' %}">Back</a>
+</div>
 {% endblock %}
