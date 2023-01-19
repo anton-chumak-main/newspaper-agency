@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
@@ -23,6 +25,7 @@ class ModelTests(TestCase):
         Newspaper.objects.create(
             title="Test model",
             context="Test context",
+            published_date=datetime.date.today(),
             topic=topic
         )
 
@@ -60,4 +63,4 @@ class ModelTests(TestCase):
     def test_newspaper_str(self):
         newspaper = Newspaper.objects.get(id=1, topic_id=1)
 
-        self.assertEqual(str(newspaper), "Test model Test context (2023-01-17)")
+        self.assertEqual(str(newspaper), f"Test model Test context ({datetime.date.today()})")
