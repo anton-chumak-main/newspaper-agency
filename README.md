@@ -4,15 +4,15 @@ Django project for tracking Redactors, assigned to Newspapers.
 So you will always know, who were the publishers of each Newspaper.
 
 
-[Newspaper agency project deployed to ....](PASTE_LINK_HERE)
+[Newspaper agency project deployed to Render](PASTE_LINK_HERE)
 
 # Installation
 
 Python3 must be already installed
 
 ```shell
-git clone 
-cd
+git clone https://github.com/anton-chumak-main/newspaper-agency.git
+cd newspaper-agency
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
