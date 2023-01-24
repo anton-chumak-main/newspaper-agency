@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}<title>About | Newspaper Agency</title>{% endblock %}
+
+{% block content %}
+  <div class="row" style="height: 100%">
+    <h2 class="text-dark pt-3 mt-n5 border border-dark text-xxl-center">
+      NewspaperAgency
+    </h2>
+  </div>
+  <br>
+  <p style= "text-indent: 3%" >Newspapers are an important part of the life of modern society, but they are being replaced more and more by the Internet, which has both positive and negative results.</p>
+  <p style= "text-indent: 3%">For modern society, high-quality and timely information is one of the main values. Its creation and dissemination is a function of the mass media, among which one of the most ancient is the periodical press.
+    The role of newspapers and magazines in the life of society is enormous. Magazines, newspapers, popular science and fiction are the main means of storing and transmitting from generation to generation all the achievements of science and culture.
+    For people of all ages, magazines and newspapers serve as a source of knowledge, help to learn and appreciate life, understand the laws of social relations and natural phenomena.</p>
+  <div >Information update: {% now "jS F Y H:i" %}</div>
+{% endblock %}
