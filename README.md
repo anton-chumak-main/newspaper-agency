@@ -18,6 +18,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 python manage.py runserver
 ```
+ - You can use the following superuser (or create another user one yourself):
+    - Login: user
+    - Password: User12345
 
 ## Feature
 
