@@ -4,7 +4,7 @@ Django project for tracking Redactors, assigned to Newspapers.
 So you will always know, who were the publishers of each Newspaper.
 
 
-[Newspaper agency project deployed to Render](PASTE_LINK_HERE)
+[Newspaper agency project deployed to Render](https://newspaper-agency-de9j.onrender.com)
 
 # Installation
 
