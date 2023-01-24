@@ -11,8 +11,6 @@ from agency.models import Redactor, Newspaper, Topic
 
 @login_required
 def index(request):
-    """View function for the home page of the site."""
-
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
 
@@ -24,6 +22,11 @@ def index(request):
         }
 
     return render(request, "agency/index.html", context=context)
+
+
+@login_required
+def about(requests):
+    return render(requests, "agency/about.html")
 
 
 class TopicListView(LoginRequiredMixin, generic.ListView):
