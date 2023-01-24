@@ -2,6 +2,7 @@ from django.urls import path
 
 from agency.views import (
     index,
+    about,
     TopicListView,
     TopicCreateView,
     TopicUpdateView,
@@ -21,6 +22,7 @@ from agency.views import (
 
 urlpatterns = [
     path("", index, name="index"),
+    path("about", about, name="about"),
     path(
         "topics/",
         TopicListView.as_view(),
