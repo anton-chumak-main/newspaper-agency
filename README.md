@@ -15,6 +15,11 @@ git clone https://github.com/anton-chumak-main/newspaper-agency.git
 cd newspaper-agency
 python3 -m venv venv
 source venv/bin/activate
+
+set DJANGO_DEBUG=<False to run in DEBUG=False or True for DEBUG=True>
+set SECRET_KEY=<your SECRET_KEY>
+set DATABASE_URL=<your DATABASE_URL>
+
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
